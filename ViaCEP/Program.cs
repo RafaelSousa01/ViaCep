@@ -17,7 +17,6 @@ internal class Program
                 string cep = Console.ReadLine();
                 Console.WriteLine();
 
-
                 var client = new RestClient($"https://viacep.com.br");
 
                 var request = new RestRequest($"/ws/{cep}/json/", Method.Get);
@@ -45,8 +44,6 @@ internal class Program
                 Console.ReadLine();
             }
         }
-
         Console.WriteLine("Programa encerrado!");
-
     }
 }
