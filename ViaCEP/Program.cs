@@ -27,7 +27,7 @@ internal class Program
                 Console.WriteLine(response.Content);
                 Console.ForegroundColor = ConsoleColor.White;
 
-                string targetPath = $@"C:\Users\rafae\Documents\AJD\TreinoAPI\APIViaCep\CepPesquisado\{cep}.json";
+                string targetPath = $@"C:\Users\rafae\Documents\AJD\TreinoAPI\APIViaCep\ViaCep\ResultadoPesquisa\{cep}.json";
                 File.WriteAllText(targetPath, response.Content);
                 Console.WriteLine();
                 Console.WriteLine("Deseja encerrar o programa? Digite 's' \n Para realizar outra busca digite 'n'");
