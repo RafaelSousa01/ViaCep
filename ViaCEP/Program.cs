@@ -1,6 +1,6 @@
 ﻿using RestSharp;
 using System.IO;
-
+using ViaCEP;
 
 internal class Program
 {
@@ -16,20 +16,14 @@ internal class Program
                 Console.Write("Digite um CEP válido: ");
                 string cep = Console.ReadLine();
                 Console.WriteLine();
-
-                var client = new RestClient($"https://viacep.com.br");
-
-                var request = new RestRequest($"/ws/{cep}/json/", Method.Get);
-
-                var response = client.Get(request);
+                string viaCep = ViaCepRest.GetCep(cep);
 
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine(response.Content);
+                Console.WriteLine(viaCep);
                 Console.ForegroundColor = ConsoleColor.White;
-
-                string targetPath = $@"C:\Users\rafae\Documents\AJD\TreinoAPI\APIViaCep\ViaCep\ResultadoPesquisa\{cep}.json";
-                File.WriteAllText(targetPath, response.Content);
                 Console.WriteLine();
+                Functions.CreateFile($"{cep}.json", viaCep);
+                  
                 Console.WriteLine("Deseja encerrar o programa? Digite 's' \n Para realizar outra busca digite 'n'");
                 char encerraPrograma = char.Parse(Console.ReadLine());
                 if (encerraPrograma == 's')
